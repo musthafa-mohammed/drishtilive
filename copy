@@ -1,0 +1,14 @@
+<div class="input-group" id="search">
+  <div class="row">
+    <div class="col-md-8">
+  <div class="bs-example">
+    <input type="text" name="typeahead" class="typeahead tt-query form-control" autocomplete="off" spellcheck="false" placeholder="Type your Query">
+  </div>
+  <div class="col-md-4 pull-right">
+    <span class="input-group-btn">
+        <button class="btn btn-secondary" type="button" onclick="onSearch()">Go!</button>
+     </span>
+   </div>
+     </div>
+  </div>
+</div>

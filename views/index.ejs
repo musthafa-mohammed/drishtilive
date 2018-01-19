@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>DrishtiLive</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+  <script type="text/javascript" src="scripts/typeahead.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('input.typeahead').typeahead({
+        name: 'countries',
+        remote: 'http://localhost:3000/search?key=%QUERY',
+        limit: 10
+      });
+    });
+  </script>
+  <style>
+    @media screen and (max-width:481px) {
+      #logo {
+        position: absolute;
+        left: 50%;
+        margin-left: -50px !important;
+        /* 50% of your logo width */
+        display: block;
+      }
+      #search {
+        padding-top: 120px;
+      }
+    }
+
+    @media screen and (min-width:500px) {
+      #logo {
+        padding-left: 10px;
+      }
+      #search {
+        padding-top: 40px;
+
+      }
+    }
+
+    }
+
+    .bs-example {
+      font-family: sans-serif;
+      position: relative;
+      margin: 50px;
+    }
+
+    .typeahead,
+    .tt-query,
+    .tt-hint {
+      border: 2px solid #CCCCCC;
+      border-radius: 8px;
+      font-size: 24px;
+      height: 30px;
+      line-height: 30px;
+      outline: medium none;
+      padding: 8px 12px;
+      width: 300px;
+      height:37px;
+    }
+
+    .typeahead {
+      background-color: #FFFFFF;
+    }
+
+    .typeahead:focus {
+      border: 2px solid #0097CF;
+    }
+
+    .tt-query {
+      box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    }
+
+    .tt-hint {
+      color: #999999;
+    }
+
+    .tt-dropdown-menu {
+      background-color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+      box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+      margin-top: 12px;
+      padding: 8px 0;
+      width: 422px;
+    }
+
+    .tt-suggestion {
+      font-size: 24px;
+      line-height: 24px;
+      padding: 3px 20px;
+    }
+
+    .tt-suggestion.tt-is-under-cursor {
+      background-color: #0097CF;
+      color: #FFFFFF;
+    }
+
+    .tt-suggestion p {
+      margin: 0;
+    }
+  </style>
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" media="mediatype and|not|only (expressions)" href="css/media.css">
+</head>
+
+<body>
+
+
+
+  <nav class="navbar  navbar-static-top">
+    <div class="container-fluid">
+      <a href="http://drishticet.org/index.html" id="logo"><img src="images/logosm.png"></a>
+
+
+      <div class="input-group" id="search">
+        <div class="bs-example">
+          <input id="input_id" type="text" name="typeahead" class="typeahead tt-query form-control" autocomplete="off" spellcheck="false" placeholder="Search for event">
+        </div>
+
+        <span class="input-group-btn" height="60px">
+              <button class="btn btn-secondary" type="button" onclick="onSearch()" height="60px" >Search</button>
+           </span>
+
+
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container">
+
+
+    <div class="row">
+      <div class="col-md-4">
+        <div class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                Live events
+              </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse collapse in">
+              <ul class="list-group">
+                <% live_events.forEach(function(event) { %>
+                  <li class="list-group-item">
+                    <a href="http://localhost:3000/live?name=<%= event.name %>">
+                      <%= event.name %>
+                    </a>
+                  </li>
+                  <% }); %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <script src="scripts/index_script.js"></script>
+
+
+
+</body>
+
+</html>
